@@ -7,6 +7,7 @@ import LoginComponent from './LoginComponent';
 import RegisterComponent from './RegisterComponent';
 import StudentApp from './Register/StudentApp';
 import AlbumComponent from './AlbumComponent';
+import PersonalPageComponent from './PersonalPageComponent';
 
 function App() {
   return (

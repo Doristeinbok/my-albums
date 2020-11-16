@@ -11,11 +11,19 @@ function HomeComponent() {
     useEffect(async () => {
         const jsonAlbums = await getAlbums;
         setTimeout(() => {
-            setAlbums(jsonAlbums);     
-            console.log(albums);       
+            setAlbums(jsonAlbums);
         }, 2000);
     }, []);
 
+    const arrangeCards = (cardId) => {
+        const album = albums.find(album => album.id === cardId);
+        const newAlbums = [...albums];
+        const newAlbum = album['likes'] = album.likes + 1;
+
+        setAlbums(newAlbums)
+        console.log(newAlbum);
+
+    }
 
     return (
         <div className="container">
@@ -82,14 +90,16 @@ function HomeComponent() {
 
             <div className="row my-5">
                 <div className="card-deck">
-                    {albums.sort((album1,album2) => album2.numOfFollowers - album1.numOfFollowers).map(album => <GalleryComponent albumObj={album}/>)
+                    {albums.sort((album1,album2) => album2.likes - album1.likes).map(
+                        album => <GalleryComponent id={album.id} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1} />)
                     .slice(0,4)}
                     {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />}
                 </div>
             </div>
             <div className="row my-5">
                 <div className="card-deck">
-                    {albums.map(album => <GalleryComponent albumObj={album}/>)
+                {albums.sort((album1,album2) => album2.likes - album1.likes).map(
+                        album => <GalleryComponent id={album.id} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1}/>)
                     .slice(4,8)}
                     {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />}    
                 </div>

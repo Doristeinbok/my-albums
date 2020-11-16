@@ -6,7 +6,7 @@ function AlbumComponent (props) {
         <>
             <div className="row m-5">
                 <div className="col">
-                    <img src="images/Radioheadokcomputer.png" className="img-fluid img-thumbnail" alt="album" />
+                    <img src="images/albumsImages/Radioheadokcomputer.png" className="img-fluid img-thumbnail" alt="album" />
                 </div>
                 <div className="col">
                     <h2>ok computer</h2>

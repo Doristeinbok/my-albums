@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import CardComponent from './CardComponent';
-import getAlbums from '../api/albumsData.js';
+import getAlbums from '../../api/albumsData.js';
 
 
 function PersonalPageComponent() {
@@ -47,7 +47,7 @@ function PersonalPageComponent() {
                     </ul>   
                 </div>
                 <div className="col">
-                    {albumCard && <CardComponent albumObj={albums[albumCard - 1]}/>}
+                    {albumCard && albums&&<CardComponent albumObj={albums[albumCard - 1]}/>}
                 </div>
             </div>
             <div className="row my-3"></div>

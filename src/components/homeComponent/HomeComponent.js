@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import CardComponent from './CardComponent';
-import getAlbums from '../api/albumsData.js';
+import CardComponent from '../personalPageComponent/CardComponent';
+import getAlbums from '../../api/albumsData.js';
 import GalleryComponent from './GalleryComponent';
 
 function HomeComponent() {
 
     const [albums, setAlbums] = useState([]); //inport external data
 
-    console.log(albums)
     useEffect(async () => {
         const jsonAlbums = await getAlbums;
         setTimeout(() => {
@@ -36,13 +35,13 @@ function HomeComponent() {
                             <legend className="col-form-label col-sm-6 pt-0"><h3>Show albums</h3></legend>
                             <div className="col-sm-10">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="popular" checked={true} checked />
                                     <label className="form-check-label" htmlFor="gridRadios1">
                                         Most popular
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="newest" />
                                     <label className="form-check-label" htmlFor="gridRadios2">
                                         newest
                                     </label>
@@ -83,7 +82,7 @@ function HomeComponent() {
 
             <div className="row my-5">
                 <div className="card-deck">
-                    {albums.map(album => <GalleryComponent albumObj={album}/>)
+                    {albums.sort((album1,album2) => album2.numOfFollowers - album1.numOfFollowers).map(album => <GalleryComponent albumObj={album}/>)
                     .slice(0,4)}
                     {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />}
                 </div>

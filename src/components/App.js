@@ -1,13 +1,12 @@
 import React from 'react';
 
-import HomeComponent from './HomeComponent';
+import HomeComponent from './homeComponent/HomeComponent';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
-import LoginComponent from './LoginComponent';
-import RegisterComponent from './RegisterComponent';
-import StudentApp from './Register/StudentApp';
-import AlbumComponent from './AlbumComponent';
-import PersonalPageComponent from './PersonalPageComponent';
+import LoginComponent from './registerComponent/LoginComponent';
+import RegisterComponent from './registerComponent/LoginComponent';
+import StudentApp from './registerComponent/LoginComponent';
+import PersonalPageComponent from './personalPageComponent/PersonalPageComponent';
 
 function App() {
   return (

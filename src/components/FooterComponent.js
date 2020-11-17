@@ -1,13 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function FooterComponent() {
 
     return (
 
-      <div className="row">
-        <div className="col">
-            <h5>Register for free</h5>
-            <button className="btn btn-primary">Sign up!</button>
+      <div className="row mt-5">
+        <div className="col mb-4 text-center">
+            <Link to="/register" className="btn btn-primary">Sign up, it's free!</Link>
         </div>
         <div className="col">
             © 2020 Copyright: <a href="mailto:Dori.steinbok@gmail.com"> Dori.steinbok@gmail.com </a>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function CardComponent(props) {
 
@@ -10,8 +11,25 @@ function CardComponent(props) {
                             <h4 className="card-title">{props.albumObj.albumName}</h4>
                             <p>Band: {props.albumObj.bandName}</p>
                             <p>released on: {props.albumObj.releasedOn}</p>
-                            <a href="#" className="btn btn-primary btn-sm mb-4">Read More</a>
-                            {props.randCard && <a href="#" className="btn btn-success btn-block">Add to my collection</a>}
+                            <Link to='/album' className="btn btn-primary btn-sm mb-4">Read More</Link>
+                            
+                            {/* remove from my collection - only for 'Remove From List' card */}
+
+                            {props.listCard && 
+                            <div className="row">
+                                <button className="btn btn-danger btn-block" onClick={() => props.removeAlbums(props.albumObj.id)}>Remove From List</button>
+                            </div>
+                            }
+
+                            {/* Add to my collection - only for 'I feel lucky' card */}
+                                
+                            {props.randCard && 
+                                <button className="btn btn-success btn-block"
+                                    onClick={() => props.addToList(props.albumObj.id)}
+                                    >
+                                    Add to my collection
+                                </button>
+                            }
                         </div>
                     </div>
                     <div className="col-sm-5">

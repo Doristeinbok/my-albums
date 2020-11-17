@@ -4,9 +4,10 @@ function AlbumComponent (props) {
 
     return (
         <>
-            <div className="row m-5">
+            <div className="row my-5"></div>
+            <div className="row">
                 <div className="col">
-                    <img src="images/albumsImages/Radioheadokcomputer.png" className="img-fluid img-thumbnail" alt="album" />
+                    <img src="images\albumsImages\Radioheadokcomputer.png" className="img-fluid img-thumbnail" alt="album" />
                 </div>
                 <div className="col">
                     <h2>ok computer</h2>
@@ -17,7 +18,7 @@ function AlbumComponent (props) {
             </div>
             <div className="row m-5">
                 <ol>
-                    <h4>Track listing</h4>
+                    <h4>Songs</h4>
                     <li>"Airbag"</li>
                     <li>"Paranoid Android"</li>
                     <li>"Subterranean Homesick Alien"</li>

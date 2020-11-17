@@ -5,8 +5,7 @@ import HomeComponent from './homeComponent/HomeComponent';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
 import LoginComponent from './registerComponent/LoginComponent';
-import RegisterComponent from './registerComponent/LoginComponent';
-import StudentApp from './registerComponent/LoginComponent';
+import RegisterComponent from './registerComponent/RegisterComponent';
 import PersonalPageComponent from './personalPageComponent/PersonalPageComponent';
 import AlbumComponent from './AlbumComponent';
 
@@ -16,6 +15,12 @@ function App() {
       <div className="container">
         <HeaderComponent />
         <Switch>
+          <Route path="/register">
+            <RegisterComponent />
+          </Route>
+          <Route path="/login">
+            <LoginComponent />
+          </Route>
           <Route path="/personal">
             <PersonalPageComponent />
           </Route>

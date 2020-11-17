@@ -16,8 +16,7 @@ function PersonalPageComponent() {
         const jsonAlbums = await getAlbums;
         setTimeout(() => {
             setAlbums(jsonAlbums);     
-            console.log(albums);       
-        }, 2000);
+        }, 1000);
     }, []);
 
     const showAlbumCard = (albumId) => {
@@ -25,17 +24,36 @@ function PersonalPageComponent() {
     }
 
     const randomAlbums = () => {
-        const randId = 1 + Math.floor(Math.random()*5);
+        const randId = 1 + Math.floor(Math.random()*10);
         setRandomAlbum(randId);
-        console.log(randId);
+    }
+
+    const addToList = (id) => {
+        let newAlbums = [...albums];
+        const newAlbum = newAlbums.find(album => album.id === id);
+        newAlbums.push(newAlbum);
+        console.log(newAlbums);
+        setAlbums(newAlbums);
+    }
+
+    const removeAlbums = (id) => {
+        let newAlbums = [...albums];
+        const newAlbum = newAlbums.find(album => album.id === id);
+        newAlbums.splice(id-1, 1);
+        console.log(newAlbums);
+        console.log(id);
+        setAlbums(newAlbums);
     }
 
     return (
         <div className="container">
-            <h1 className="text-center">Hello Gili!</h1>
+            <div className="row my-5"></div>
             <div className="row"><h2>My collection</h2></div>
             <div className="row">
                 <div className="col">
+
+                    {/* Albums List */}
+
                     <ul className="list-group">
                         {albums.map(album => 
                             <a key={album.id} role="button" className="list-group-item list-group-item-action"
@@ -47,17 +65,18 @@ function PersonalPageComponent() {
                     </ul>   
                 </div>
                 <div className="col">
-                    {albumCard && albums&&<CardComponent albumObj={albums[albumCard - 1]}/>}
+                    {albumCard && albums&&<CardComponent albumObj={albums[albumCard - 1]} listCard={true} removeAlbums={removeAlbums}/>}
                 </div>
             </div>
-            <div className="row my-3"></div>
+
+            {/* I feel lucky */}
+
+            <div className="row my-5"></div>
+            <div className="row my-3">
+                <button className="btn btn-primary m-2" onClick={randomAlbums}>I feel lucky</button>
+            </div>
             <div className="row">
-                <div className="col-sm-4">
-                    <button className="btn btn-primary m-2" onClick={randomAlbums}>I feel lucky</button>
-                </div>
-                <div className="col-sm-8">
-                    {randomAlbum && <CardComponent albumObj={albums[randomAlbum - 1]} randCard={1}/>}
-                </div>
+                {randomAlbum && <CardComponent albumObj={albums[randomAlbum - 1]} randCard={true} addToList={addToList} />}
             </div>
         </div>
     )

@@ -64,15 +64,16 @@ function LoginComponent() {
           <div className="row">
             <div className="d-flex justify-content-around">
                 <div>
-                    <div className="custom-control custom-checkbox">
+                    <div className="custom-control custom-checkbox mr-5">
                         <input type="checkbox" className="custom-control-input" id="defaultLoginFormRemember" />
-                        <label className="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                        <label className="custom-control-label" htmlFor="defaultLoginFormRemember">Remember me</label>
                     </div>
                 </div>
                 <div>
                     <a href="">Forgot password?</a>
                 </div>
             </div>
+
           </div>
             <button className="btn btn-info btn-block my-4" type="submit">Sign in</button>
             <p>Not a member?

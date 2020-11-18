@@ -8,6 +8,8 @@ function HomeComponent() {
 
     const [albums, setAlbums] = useState([]); //inport external data
     const [sortPopularDesc, setSortPopularDesc] = useState(true);
+    const [searchAlbum, setSearchAlbum] = useState('');
+    const [searchAlbumByBand, setSearchAlbumByBand] = useState('');
 
     useEffect(async function fetchAlbums() {
         let arrayAlbums;
@@ -29,8 +31,6 @@ function HomeComponent() {
                 const newAlbum = {
                     ...album,
                     likes: album.likes+1
-                    //ToDo
-                    //set last updated date
                 };
                 return newAlbum;
             }
@@ -47,6 +47,13 @@ function HomeComponent() {
             album2.lastUpdate.slice(7,11) - album1.lastUpdate.slice(7,11)));
         
         setAlbums(copy);
+    }
+
+    const findAlbum = (e) => {
+        setSearchAlbum(e.target.value);
+    }
+    const findByBand = (e) => {
+        setSearchAlbumByBand(e.target.value);
     }
 
     return (
@@ -83,26 +90,39 @@ function HomeComponent() {
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="newest" onChange={() => sortPopular(false)} />
                                     <label className="form-check-label" htmlFor="gridRadios2">
-                                        Newest
+                                        Most updated
                                     </label>
                                 </div>
                             </div>
                         </div>
+                        <div className="row">
+                            <nav className="navbar navbar-light bg-light">
+                                <form className="form-inline">
+                                    <input onChange={findAlbum} className="form-control mr-sm-2" type="search" placeholder="Find by Album Name" aria-label="Search" />
+                                </form>
+                            </nav>
+                        </div>
+                        <div className="row">
+                            <nav className="navbar navbar-light bg-light">
+                                <form className="form-inline">
+                                    <input onChange={findByBand} className="form-control mr-sm-2" type="search" placeholder="Find by Band Name" aria-label="Search" />
+                                </form>
+                            </nav>
+                        </div>
+   
                     </fieldset>
                 </form>
             </div>
-
-            
-
-            <div className="row">                
-                {/* <div className="card-deck"> */}
-                    {albums.map(
-                        (album,index) => <div className="col-md-3 mb-5" id={index}>
-                                            <GalleryComponent id={index} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1} />
-                                        </div>)
-                    }
+            <div className="row">
+                            {/* <h1>{searchAlbum}</h1> */}
+                            {albums.filter((album) => album.albumName.toLocaleLowerCase().includes(searchAlbum)
+                                    &&album.bandName.toLocaleLowerCase().includes(searchAlbumByBand))
+                                        .map((album,index) => <div className="col-md-3 mb-5" id={index}>
+                                                                <GalleryComponent id={index} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1} />
+                                                            </div>)
+                            }
                     {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />}
-                {/* </div> */}
+
             </div>
         </div>
     )

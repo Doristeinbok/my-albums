@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import CardComponent from './CardComponent';
 import getAlbums from '../../api/albumsData.js';
+import GalleryComponent from '../homeComponent/GalleryComponent';
 
 
 function PersonalPageComponent() {
@@ -31,6 +32,7 @@ function PersonalPageComponent() {
     const addToList = (id) => {
         let newAlbums = [...albums];
         const newAlbum = newAlbums.find(album => album.id === id);
+        // if(newAlbum.id == albums.find)
         newAlbums.push(newAlbum);
         console.log(newAlbums);
         setAlbums(newAlbums);
@@ -38,10 +40,13 @@ function PersonalPageComponent() {
 
     const removeAlbums = (id) => {
         let newAlbums = [...albums];
-        const newAlbum = newAlbums.find(album => album.id === id);
-        newAlbums.splice(id-1, 1);
-        console.log(newAlbums);
-        console.log(id);
+        let newAlbum = newAlbums.find(album => album.id === id);
+        for (let i=0 ; i<newAlbums.length-1 ; i++) {
+            if (newAlbums[i] === newAlbum) {
+                newAlbums.splice(i, 1);
+            }
+        }
+        
         setAlbums(newAlbums);
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import './App.css';
 import HomeComponent from './homeComponent/HomeComponent';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
@@ -24,7 +25,7 @@ function App() {
           <Route path="/personal">
             <PersonalPageComponent />
           </Route>
-          <Route path="/album" >
+          <Route path="/album/:id" >
             <AlbumComponent />
           </Route>
           <Route path="/" >

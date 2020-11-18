@@ -1,6 +1,15 @@
 import React from 'react';
 
 function RegisterComponent() {
+
+  const [student, setStudent] = useState({
+    firstName: {value:'', required: true, minLength: 2, errors: []},
+    lastName: {value:'', required: true, minLength: 2, errors: []},
+    email:    {value:'', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, errors: []},
+    password:   {value:'', required: true, errors: []},
+  }); 
+
+
     return(
         <div className="main">
           <form>

@@ -5,7 +5,7 @@ function HeaderComponent() {
 
     return (
         <div className="header"> 
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{backgroundColor: 'rgb(53,66,82)'}}>
                 <Link class="navbar-brand" to="/">
                     <img src="images/logo.jpg" width="50px" height="auto" alt="logo" />
                 </Link>

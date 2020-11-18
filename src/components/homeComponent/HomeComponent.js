@@ -10,9 +10,16 @@ function HomeComponent() {
     const [sortPopularDesc, setSortPopularDesc] = useState(true);
 
     useEffect(async function fetchAlbums() {
-        const jsonAlbums = await getAlbums;
+        let arrayAlbums;
+        if (!localStorage.getItem('albums')) {
+            arrayAlbums = await getAlbums;
+            localStorage.setItem('albums', JSON.stringify(arrayAlbums));
+        }else{
+            arrayAlbums = JSON.parse(localStorage.getItem('albums'));
+        }
+
         setTimeout(() => {
-            setAlbums(jsonAlbums);
+            setAlbums(arrayAlbums);
         }, 2000);
     }, []);
 
@@ -37,7 +44,7 @@ function HomeComponent() {
         setSortPopularDesc(isPopular);
         const copy = data || [...albums];
         copy.sort((album1,album2) => (isPopular ? album2.likes - album1.likes : 
-            album2.releasedOn - album1.releasedOn));
+            album2.lastUpdate.slice(7,11) - album1.lastUpdate.slice(7,11)));
         
         setAlbums(copy);
     }
@@ -47,10 +54,20 @@ function HomeComponent() {
             <div className="row my-5"></div>
             <div className="row">
                 <div className="col text-center">
-                    <img src="images/logo.jpg" alt="logo" style={{width: '300px' ,height: 'auto'}}/>
+                    <img src="/images/logo.jpg" alt="logo" style={{width: '300px' ,height: 'auto'}}/>
                 </div>
                
             </div>
+            <div className="row my-3"></div>
+            <hr/>
+            
+            {/* Album Gallery */}
+
+            <div className="row justify-content-center">
+                <h1>Album Gallery</h1>
+            </div>
+            
+            <hr/>
             <div className="row">
                 <form>
                     <fieldset className="form-group">
@@ -66,7 +83,7 @@ function HomeComponent() {
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="newest" onChange={() => sortPopular(false)} />
                                     <label className="form-check-label" htmlFor="gridRadios2">
-                                        Newset
+                                        Newest
                                     </label>
                                 </div>
                             </div>
@@ -75,22 +92,14 @@ function HomeComponent() {
                 </form>
             </div>
 
-            <hr/>
             
-            {/* Album Gallery */}
-
-            <div className="row justify-content-center">
-                <h1>Album Gallery</h1>
-            </div>
-            
-            <hr/>
 
             <div className="row">                
                 {/* <div className="card-deck"> */}
                     {albums.map(
-                        album => <div className="col-md-3 mb-5">
-                            <GalleryComponent id={album.id} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1} />
-                            </div>)
+                        (album,index) => <div className="col-md-3 mb-5" id={index}>
+                                            <GalleryComponent id={index} albumObj={album} arrangeCards={arrangeCards} likes={album.likes + 1} />
+                                        </div>)
                     }
                     {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />}
                 {/* </div> */}

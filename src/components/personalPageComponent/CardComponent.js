@@ -11,13 +11,14 @@ function CardComponent(props) {
                             <h4 className="card-title">{props.albumObj.albumName}</h4>
                             <p>Band: {props.albumObj.bandName}</p>
                             <p>released on: {props.albumObj.releasedOn}</p>
-                            <Link to='/album' className="btn btn-primary btn-sm mb-4">Read More</Link>
+                            <Link to={`/album/${props.albumObj.id}`} className="btn btn-primary btn-sm mb-4">Read More</Link>
                             
                             {/* remove from my collection - only for 'Remove From List' card */}
 
                             {props.listCard && 
                             <div className="row">
-                                <button className="btn btn-danger btn-block" onClick={() => props.removeAlbums(props.albumObj.id)}>Remove From List</button>
+                                <button className="btn btn-danger btn-block" 
+                                    onClick={() => props.removeAlbums(props.albumObj.id)}>Remove From List</button>
                             </div>
                             }
 

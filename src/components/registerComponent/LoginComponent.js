@@ -35,42 +35,52 @@ function LoginComponent() {
 
   return (
     <div className="row my-5">
-      <div className="col"></div>
-      <div className="col-sm-8">
-        <form className="text-center border border-light p-5" action="#!">
-          <p className="h4 mb-4">Sign in</p>
-          <div className="row">
-            <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="E-mail" 
-                name="email"
-                defaultValue={student.email.value}
-                onBlur={onInputChange}
-            />
-            {
-            <Errors errors={student.email.errors} />
-            }
+      {/* <div className="col"></div> */}
+      <div className="col">
+        <form className="border border-light p-5" action="#!">
+        <hr className="divider"/>
+        <div className="row justify-content-center">
+            <h1>Sign in</h1>
+        </div>
+        <hr className="divider"/>
+          <div className="row mt-5">
+            <div className="col">
+              <input type="email" id="defaultLoginFormEmail" className="form-control" placeholder="E-mail" 
+                  name="email"
+                  defaultValue={student.email.value}
+                  onBlur={onInputChange}
+              />
+              {
+              <Errors errors={student.email.errors} />
+              }
+            </div>
+            <div className="col"></div>
           </div>
 
           <div className="row">
-            <input type="password" id="defaultLoginFormPassword" className="form-control mb-4" placeholder="Password" 
-              name="password"
-              defaultValue={student.password.value}
-              onBlur={onInputChange}
-            />
-            {
-                <Errors errors={student.password.errors} />
-            }
+            <div className="col">
+              <input type="password" id="defaultLoginFormPassword" className="form-control mt-4" placeholder="Password" 
+                name="password"
+                defaultValue={student.password.value}
+                onBlur={onInputChange}
+              />
+              {
+                  <Errors errors={student.password.errors} />
+              }
+            </div>
+            <div className="col"></div>
           </div>
           
           <div className="row">
             <div className="d-flex justify-content-around">
                 <div>
-                    <div className="custom-control custom-checkbox mr-5">
+                    <div className="custom-control custom-checkbox mr-5 mt-5">
                         <input type="checkbox" className="custom-control-input" id="defaultLoginFormRemember" />
-                        <label className="custom-control-label" htmlFor="defaultLoginFormRemember">Remember me</label>
+                        <label className="custom-control-label mr-5" htmlFor="defaultLoginFormRemember">Remember me</label>
+                        <a href="">Forgot password?</a>
                     </div>
                 </div>
-                <div>
-                    <a href="">Forgot password?</a>
+                <div className="mt-4">
                 </div>
             </div>
 
@@ -85,7 +95,7 @@ function LoginComponent() {
             <a href="#" className="mx-2" role="button"><i className="fab fa-github light-blue-text"></i></a>
         </form>
       </div>
-      <div className="col"></div>
+      {/* <div className="col"></div> */}
     </div>
 
   )

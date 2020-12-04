@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import CardComponent from './CardComponent';
 import getAlbums from '../../api/albumsData.js';
-import GalleryComponent from '../homeComponent/GalleryComponent';
-
 
 function PersonalPageComponent() {
 
@@ -16,7 +14,7 @@ function PersonalPageComponent() {
     useEffect(async () => {
         const jsonAlbums = await getAlbums;
         setTimeout(() => {
-            setAlbums(jsonAlbums);     
+            setAlbums(jsonAlbums);  
         }, 1000);
     }, []);
 
@@ -53,7 +51,11 @@ function PersonalPageComponent() {
     return (
         <div className="container">
             <div className="row my-5"></div>
-            <div className="row"><h2>My collection</h2></div>
+            <hr className="divider"/>
+            <div className="row justify-content-center">
+                <h1>My collection</h1>
+            </div>
+            <hr className="divider"/>
             <div className="row">
                 <div className="col">
 
@@ -70,7 +72,11 @@ function PersonalPageComponent() {
                     </ul>   
                 </div>
                 <div className="col">
-                    {albumCard && albums&&<CardComponent albumObj={albums[albumCard - 1]} listCard={true} removeAlbums={removeAlbums}/>}
+                    {albumCard && albums && <CardComponent albumObj={albums[albumCard - 1]} listCard={true} removeAlbums={removeAlbums}/>}
+                    {/* {!albums.length && <img src='images/loader.gif' alt="loader" style={{width: '300px' ,height: '300px'}} />} */}
+
+                    {/* {albums.length && <CardComponent albumObj={getAlbums[0]} listCard={true} removeAlbums={removeAlbums}/>} */}
+                    
                 </div>
             </div>
 
@@ -78,7 +84,9 @@ function PersonalPageComponent() {
 
             <div className="row my-5"></div>
             <div className="row my-3">
-                <button className="btn btn-primary m-2" onClick={randomAlbums}>I feel lucky</button>
+                <div className="col-5">
+                    <button className="btn btn-dark btn-lg btn-block m-2" onClick={randomAlbums}>I feel lucky</button>
+                </div>
             </div>
             <div className="row">
                 {randomAlbum && <CardComponent albumObj={albums[randomAlbum - 1]} randCard={true} addToList={addToList} />}

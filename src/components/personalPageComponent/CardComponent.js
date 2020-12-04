@@ -6,8 +6,8 @@ function CardComponent(props) {
     return (
             <div className="card float-left">
                 <div className="row">
-                    <div className="col-sm-7">
-                        <div className="card-block">
+                    <div className="col-sm-7 pl-4">
+                        <div className="card-block m-3">
                             <h4 className="card-title">{props.albumObj.albumName}</h4>
                             <p>Band: {props.albumObj.bandName}</p>
                             <p>released on: {props.albumObj.releasedOn}</p>
@@ -33,8 +33,8 @@ function CardComponent(props) {
                             }
                         </div>
                     </div>
-                    <div className="col-sm-5">
-                        <img src={props.albumObj.picture} alt="Card" style={{width: '300px' ,height: '300px'}} />
+                    <div className="col-sm-5 pl-4">
+                        <img className="rounded" src={props.albumObj.picture} alt="Card" style={{width: '200' ,height: 'auto'}} />
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ function GalleryComponent (props) {
             <div className="card-body">
                 <h4 className="card-title" style={{width: '200px'}}>{props.albumObj.albumName}</h4>
                 <h5 className="card-title">{props.albumObj.bandName}</h5>
-                <Link to={`/album/${props.albumObj.id}`} className="btn btn-primary btn-sm mb-4">Read More</Link>
+                <Link to={`/album/${props.albumObj.id}`} className="btn btn-primary btn-sm">Read More</Link>
             </div>  
             <div className="card-footer">
                 <p className="text-muted d-inline">{props.likes} likes</p>

@@ -36,7 +36,11 @@ function RegisterComponent() {
         <div className="main">
           <form>
             <div className="row my-5"></div>
-            <h1 className="row my-5">JOIN US!</h1>
+            <hr className="divider"/>
+            <div className="row justify-content-center">
+                <h1>JOIN US!</h1>
+            </div>
+            <hr className="divider"/>
             <h3 className="row my-5">Please fill in your information to register</h3>
 
             <div className="form-group row">

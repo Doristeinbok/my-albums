@@ -4,6 +4,8 @@ import CardComponent from '../personalPageComponent/CardComponent';
 import getAlbums from '../../api/albumsData.js';
 import GalleryComponent from './GalleryComponent';
 
+import './HomeComponent.css';
+
 function HomeComponent() {
 
     const [albums, setAlbums] = useState([]); //inport external data
@@ -61,20 +63,22 @@ function HomeComponent() {
             <div className="row my-5"></div>
             <div className="row">
                 <div className="col text-center">
-                    <img src="/images/logo.jpg" alt="logo" style={{width: '300px' ,height: 'auto'}}/>
+                    <img className="border" src="/images/logo.jpg" alt="logo" style={{width: '300px' ,height: 'auto'}}/>
                 </div>
                
             </div>
             <div className="row my-3"></div>
-            <hr/>
-            
+
             {/* Album Gallery */}
 
+            <hr className="divider"/>
+            
             <div className="row justify-content-center">
                 <h1>Album Gallery</h1>
             </div>
             
-            <hr/>
+            <hr className="divider"/>
+
             <div className="row">
                 <form>
                     <fieldset className="form-group">
@@ -90,7 +94,7 @@ function HomeComponent() {
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="newest" onChange={() => sortPopular(false)} />
                                     <label className="form-check-label" htmlFor="gridRadios2">
-                                        Most updated
+                                        Most recent updated
                                     </label>
                                 </div>
                             </div>
